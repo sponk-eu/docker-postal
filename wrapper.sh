@@ -29,6 +29,13 @@ sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/host.*/host: rabbitmq/;t trail" -e 'n;ba
 sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/username.*/username: $RABBITMQ_DEFAULT_USER/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
 sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/password.*/password: $RABBITMQ_DEFAULT_PASS/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
 sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/vhost.*/vhost: \/$RABBITMQ_DEFAULT_VHOST/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
+### DNS
+sed -i -e '/dns:/!b' -e ':a' -e "s/  smtp_server_hostname.*/  smtp_server_hostname: $DNS_SMTP_SERVER_HOSTNAME/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
+sed -i -e '/dns:/!b' -e ':a' -e "s/  spf_include.*/  spf_include: $DNS_SPF_INCLUDE/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
+sed -i -e '/dns:/!b' -e ':a' -e "s/  return_path.*/  return_path: $DNS_RETURN_PATH/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
+sed -i -e '/dns:/!b' -e ':a' -e "s/  route_domain.*/  route_domain: $DNS_ROUTE_PATH/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
+sed -i -e '/dns:/!b' -e ':a' -e "s/  track_domain.*/  track_domain: $DNS_TRACK_DOMAIN/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
+sed -i -e '/mx_records:/!b' -e ':a' -e "s/  -.*/  -: $DNS_MX_RECORD/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
 
 ## Clean Up
 rm -rf /opt/postal/tmp/pids/*
