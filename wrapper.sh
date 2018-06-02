@@ -13,6 +13,7 @@ web_server:
 EOF
 fi
 
+sed -i -e '/web:/!b' -e ':a' -e "s/host.*/host: $HOST_NAME/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
 ## Set MySQL/RabbitMQ usernames/passwords
 ### MySQL Main DB
 sed -i -e '/main_db:/!b' -e ':a' -e "s/host.*/host: mysql/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
