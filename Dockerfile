@@ -1,4 +1,4 @@
-FROM ruby:2.6-rc-alpine
+FROM ruby:2.4
 
 RUN apt-get -y update \
 	&& apt-get -y install git nodejs mysql-client \
@@ -7,8 +7,7 @@ RUN apt-get -y update \
 	&& gem install bundler \
 	&& gem install procodile \
 	&& gem install tzinfo-data \
-	&& addgroup -S postal \
-	&& adduser -S -G postal -h /opt/postal -s /bin/bash postal \
+	&& useradd -r -d /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \
 	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle \
 	&& mv /opt/postal/config /opt/postal/config-original
