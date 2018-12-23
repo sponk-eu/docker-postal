@@ -1,7 +1,7 @@
 FROM ruby:2.4
 
 RUN apt-get -y update \
-	&& apt-get -y install git nodejs mysql-client \
+	&& apt-get -y install git nodejs mysql-client libssl1.0.0 libssl-dev libmysqlclient-dev \
 	&& git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
