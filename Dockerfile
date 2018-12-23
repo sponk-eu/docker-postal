@@ -1,7 +1,7 @@
 FROM ruby:2.4-slim
 
 RUN apt-get -y update \
-	&& apt-get -y install git nodejs mysql-client libssl-dev libmysqlclient18 tzdata \
+	&& apt-get -y install git nodejs mysql-client libssl-dev mysql-common tzdata \
 	&& git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
