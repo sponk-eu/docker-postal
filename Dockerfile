@@ -1,4 +1,4 @@
-FROM ruby:2.4-slim
+FROM ruby:2.4
 
 RUN apt-get -y update \
 	&& apt-get -y install git nodejs mysql-client libssl-dev mysql-common tzdata \
